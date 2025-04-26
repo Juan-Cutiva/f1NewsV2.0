@@ -5,8 +5,16 @@ interface Props {
 }
 
 const { href, text } = Astro.props;
+
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+
+// Reemplazar espacios por guiones
+const sanitizedHref = href ? href.toLocaleLowerCase().replace(/\s+/g, '-') : '';
 ---
 
 <li class="flex w-full items-center justify-center">
-	<a href=`/${href}`>{text}</a>
+	<a href={`${getRelativeLocaleUrl(lang, '/')}${sanitizedHref}`}>{text}</a>
 </li>
