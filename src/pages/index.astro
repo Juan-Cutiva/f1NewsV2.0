@@ -1,5 +1,4 @@
 ---
-import MainHome from '@/sections/home/MainHome.astro';
 import Layout from '@/layouts/Layout.astro';
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
@@ -10,6 +9,4 @@ const t = useTranslations(lang);
 return Astro.redirect('/es/');
 ---
 
-<Layout title={t('title.index')}>
-	<MainHome />
-</Layout>
+<Layout title={t('title.index')} />
