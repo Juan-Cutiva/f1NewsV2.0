@@ -5,16 +5,51 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const HEADER = [
+	{
+		id: 1,
+		text: 'drivers'
+	},
+	{
+		id: 2,
+		text: 'teams'
+	},
+	{
+		id: 3,
+		text: 'chamTeam'
+	},
+	{
+		id: 4,
+		text: 'chamDriver'
+	}
+];
+
+const first = HEADER.slice(0, 2);
+const second = HEADER.slice(2);
 ---
 
 <header class="flex h-fit w-full items-center justify-center bg-purple-500">
 	<ul class="flex h-10 w-[80%]">
-		<LiHeader href={t('header.title')} text={t('header.title')} />
-		<LiHeader href="teams" text="Teams" />
+		{
+			first.map((item) => (
+				<LiHeader
+					href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+					text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+				/>
+			))
+		}
+
 		<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-full items-center justify-center"
-			>{t('title.index')}</a
+			>{t('header.home')}</a
 		>
-		<LiHeader href="championship-teams" text="Championship Teams" />
-		<LiHeader href="championship-drivers" text="Championship Drivers" />
+		{
+			second.map((item) => (
+				<LiHeader
+					href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+					text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+				/>
+			))
+		}
 	</ul>
 </header>
