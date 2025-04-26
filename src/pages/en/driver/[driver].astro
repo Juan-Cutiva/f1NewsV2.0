@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+export const prerender = false;
+
+const pages = [
+	{
+		slug: 'max-verstapen',
+		title: 'Max Verstapen',
+		text: 'Max Verstapen The best driver'
+	},
+	{
+		slug: 'yuki-tsunoda',
+		title: 'Yuki Tsunoda',
+		text: 'Yuki Tsunoda friend Max Verstapen'
+	}
+];
+
+const { driver } = Astro.params;
+const page = pages.find((page) => page.slug === driver);
+if (!page) return Astro.redirect('/404');
+const { title, text } = page;
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+	<h1>{text}</h1>
+</Layout>

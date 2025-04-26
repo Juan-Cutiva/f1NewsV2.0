@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+export const prerender = false;
+
+const pages = [
+	{
+		slug: 'ferrari',
+		title: 'Ferrari F1 Team',
+		text: 'Ferrari the best scuderia'
+	},
+	{
+		slug: 'redbull',
+		title: 'RedBull F1 Team',
+		text: 'RedBull the best scuderia'
+	}
+];
+
+const { team } = Astro.params;
+const page = pages.find((page) => page.slug === team);
+if (!page) return Astro.redirect('/404');
+const { title, text } = page;
+---
+
+<Layout title={title}>
+	<h1>{title}</h1>
+	<h1>{text}</h1>
+</Layout>
