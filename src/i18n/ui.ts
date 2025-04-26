@@ -5,15 +5,7 @@ export const languages = {
 
 export const defaultLang = 'es';
 
-export const ui = {
-	es: {
-		'title.index': 'Inicio',
-		'header.title': 'Pilotos',
-		'nav.home': 'Inicio'
-	},
-	en: {
-		'title.index': 'Home',
-		'header.title': 'Drivers',
-		'nav.home': 'Home'
-	}
-} as const;
+import es from './lang/es';
+import en from './lang/en';
+
+export const ui = { es, en } as const;
