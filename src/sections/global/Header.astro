@@ -1,11 +1,19 @@
 ---
 import LiHeader from '@/components/header/LiHeader.astro';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="flex h-fit w-full items-center justify-center bg-purple-500">
 	<ul class="flex h-10 w-[80%]">
-		<LiHeader href="drivers" text="Drivers" />
+		<LiHeader href={t('header.title')} text={t('header.title')} />
 		<LiHeader href="teams" text="Teams" />
+		<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-full items-center justify-center"
+			>{t('title.index')}</a
+		>
 		<LiHeader href="championship-teams" text="Championship Teams" />
 		<LiHeader href="championship-drivers" text="Championship Drivers" />
 	</ul>
