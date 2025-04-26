@@ -29,7 +29,10 @@ const first = HEADER.slice(0, 2);
 const second = HEADER.slice(2);
 ---
 
-<header class="flex h-fit w-full items-center justify-center bg-purple-500">
+<header
+	class="flex h-fit w-full items-center justify-center bg-purple-500"
+	transition:name="header"
+>
 	<ul class="flex h-10 w-[80%]">
 		{
 			first.map((item) => (
