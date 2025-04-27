@@ -16,8 +16,8 @@ const pages = [
 	}
 ];
 
-const { piloto } = Astro.params;
-const page = pages.find((page) => page.slug === piloto);
+const { driver } = Astro.params;
+const page = pages.find((page) => page.slug === driver);
 if (!page) return Astro.redirect('/404');
 const { title, text } = page;
 ---

@@ -16,8 +16,8 @@ const pages = [
 	}
 ];
 
-const { equipo } = Astro.params;
-const page = pages.find((page) => page.slug === equipo);
+const { team } = Astro.params;
+const page = pages.find((page) => page.slug === team);
 if (!page) return Astro.redirect('/404');
 const { title, text } = page;
 ---
