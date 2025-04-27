@@ -1,6 +1,6 @@
 ---
 import F1Image from '@/assets/F1Image.astro';
-import Lang from '@/components/header/lang.astro';
+import Lang from '@/components/header/Lang.astro';
 import LiHeader from '@/components/header/LiHeader.astro';
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
@@ -44,7 +44,7 @@ const second = HEADER.slice(2);
 			{
 				first.map((item) => (
 					<LiHeader
-						href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+						href={t(`header.${item.text}Url` as 'header.drivers' | 'header.teams')}
 						text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
 					/>
 				))
@@ -52,7 +52,7 @@ const second = HEADER.slice(2);
 			{
 				second.map((item) => (
 					<LiHeader
-						href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+						href={t(`header.${item.text}Url` as 'header.drivers' | 'header.teams')}
 						text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
 					/>
 				))
