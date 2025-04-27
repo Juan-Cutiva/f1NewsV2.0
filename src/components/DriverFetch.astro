@@ -1,0 +1,30 @@
+---
+type Driver = {
+	driverId: string;
+	permanentNumber: string;
+	code: string;
+	url: string;
+	givenName: string;
+	familyName: string;
+	dateOfBirth: string;
+	nationality: string;
+};
+
+// Definimos un arreglo para almacenar los familyName
+let familyNames: string[] = [];
+
+// Realizamos el fetch y almacenamos los familyName de todos los drivers
+await fetch('http://api.jolpi.ca/ergast/f1/2025/drivers')
+	.then((response) => response.json())
+	.then((data) => {
+		// Usamos un ciclo for para recorrer todos los drivers
+		for (let i = 0; i < data.MRData.DriverTable.Drivers.length; i++) {
+			familyNames.push(
+				`${data.MRData.DriverTable.Drivers[i].givenName}  ${data.MRData.DriverTable.Drivers[i].familyName}`
+			);
+		}
+	})
+	.catch((error) => console.error('Error:', error));
+---
+
+{familyNames.map((name) => <h1>{`${name} `}</h1>)}
