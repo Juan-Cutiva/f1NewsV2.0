@@ -1,7 +1,11 @@
 ---
-import { getLangFromUrl } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const url = Astro.url.pathname.slice(4);
 
 const flag = lang === 'es' ? 'co' : 'us';
 ---
@@ -21,8 +25,14 @@ const flag = lang === 'es' ? 'co' : 'us';
 		id="language-dropdown"
 		class="absolute right-0 z-10 mt-2 hidden w-40 origin-top-right rounded-md bg-neutral-800 py-2 shadow-lg ring-1 ring-black/5"
 	>
-		<a href="/en/" class="block px-4 py-2 text-sm text-white hover:bg-neutral-700">English</a>
-		<a href="/es/" class="block px-4 py-2 text-sm text-white hover:bg-neutral-700">Español</a>
+		<a
+			href=`/es/${Astro.url.pathname.slice(4)}`
+			class="block px-4 py-2 text-sm text-white hover:bg-neutral-700">{t('header.langEn')}</a
+		>
+		<a
+			href=`/en/${Astro.url.pathname.slice(4)}`
+			class="block px-4 py-2 text-sm text-white hover:bg-neutral-700">{t('header.langEs')}</a
+		>
 	</div>
 </div>
 
