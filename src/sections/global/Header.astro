@@ -2,6 +2,7 @@
 import F1Image from '@/assets/F1Image.astro';
 import Lang from '@/components/header/Lang.astro';
 import LiHeader from '@/components/header/LiHeader.astro';
+import Theme from '@/components/header/Theme.astro';
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -58,6 +59,9 @@ const second = HEADER.slice(2);
 				))
 			}
 		</ul>
-		<div class="w-[15%] bg-orange-500"><Lang /></div>
+		<div class="w-[15%] bg-orange-500">
+			<Lang />
+			<Theme />
+		</div>
 	</div>
 </header>

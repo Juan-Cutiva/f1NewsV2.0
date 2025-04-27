@@ -1,0 +1,36 @@
+<input type="checkbox" name="themeToggle" id="themeToggle" />
+
+<script>
+	document.addEventListener('astro:page-load', function () {
+		const checkbox = document.getElementById('themeToggle') as HTMLInputElement;
+		let themeHtml = '';
+
+		// Al cargar la página, revisa si existe 'theme'
+		if (!localStorage.getItem('theme')) {
+			localStorage.theme = 'light';
+			themeHtml = 'light';
+		} else {
+			themeHtml = localStorage.theme;
+		}
+
+		// Actualizar el className del <html>
+		document.documentElement.className = themeHtml;
+
+		// Marcar el checkbox según el theme
+		checkbox.checked = localStorage.theme === 'dark';
+
+		// Cuando el usuario hace click en el checkbox
+		checkbox.addEventListener('change', () => {
+			if (checkbox.checked) {
+				localStorage.theme = 'dark';
+				themeHtml = 'dark';
+			} else {
+				localStorage.theme = 'light';
+				themeHtml = 'light';
+			}
+
+			// Actualizar la clase del <html> cada vez que cambie
+			document.documentElement.className = themeHtml;
+		});
+	});
+</script>
