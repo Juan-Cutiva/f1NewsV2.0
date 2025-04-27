@@ -1,6 +1,8 @@
 ---
 import F1Image from '@/assets/F1Image.astro';
+import Lang from '@/components/header/lang.astro';
 import LiHeader from '@/components/header/LiHeader.astro';
+
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
@@ -34,11 +36,11 @@ const second = HEADER.slice(2);
 	class="flex h-fit w-full items-center justify-center bg-yellow-500"
 	transition:name="header"
 >
-	<div class="flex w-[90%] items-center justify-center bg-gray-600">
-		<div class="h-fit bg-orange-500">
-			<F1Image fill="fill-theme-f1Red" />
-		</div>
-		<ul class="flex w-[70%] text-center">
+	<div class="flex h-fit w-[90%] items-center justify-center bg-gray-600">
+		<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-[15%] items-center justify-center py-2">
+			<F1Image fill="fill-theme-f1Red" width="160" height="40" />
+		</a>
+		<ul class="flex w-[70%] gap-1 text-center">
 			{
 				first.map((item) => (
 					<LiHeader
@@ -47,10 +49,6 @@ const second = HEADER.slice(2);
 					/>
 				))
 			}
-
-			<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-full items-center justify-center"
-				>{t('header.home')}</a
-			>
 			{
 				second.map((item) => (
 					<LiHeader
@@ -60,6 +58,6 @@ const second = HEADER.slice(2);
 				))
 			}
 		</ul>
-		<div class="h-full bg-orange-500"></div>
+		<div class="w-[15%] bg-orange-500"><Lang /></div>
 	</div>
 </header>
