@@ -1,4 +1,5 @@
 ---
+import F1Image from '@/assets/F1Image.astro';
 import LiHeader from '@/components/header/LiHeader.astro';
 import { getLangFromUrl, useTranslations } from '@/i18n/utils';
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -30,29 +31,35 @@ const second = HEADER.slice(2);
 ---
 
 <header
-	class="flex h-fit w-full items-center justify-center bg-purple-500"
+	class="flex h-fit w-full items-center justify-center bg-yellow-500"
 	transition:name="header"
 >
-	<ul class="flex h-10 w-[80%]">
-		{
-			first.map((item) => (
-				<LiHeader
-					href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
-					text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
-				/>
-			))
-		}
+	<div class="flex w-[90%] items-center justify-center bg-gray-600">
+		<div class="h-fit bg-orange-500">
+			<F1Image fill="fill-theme-f1Red" />
+		</div>
+		<ul class="flex w-[70%] text-center">
+			{
+				first.map((item) => (
+					<LiHeader
+						href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+						text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+					/>
+				))
+			}
 
-		<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-full items-center justify-center"
-			>{t('header.home')}</a
-		>
-		{
-			second.map((item) => (
-				<LiHeader
-					href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
-					text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
-				/>
-			))
-		}
-	</ul>
+			<a href={getRelativeLocaleUrl(lang, '/')} class="flex w-full items-center justify-center"
+				>{t('header.home')}</a
+			>
+			{
+				second.map((item) => (
+					<LiHeader
+						href={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+						text={t(`header.${item.text}` as 'header.drivers' | 'header.teams')}
+					/>
+				))
+			}
+		</ul>
+		<div class="h-full bg-orange-500"></div>
+	</div>
 </header>

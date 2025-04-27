@@ -15,6 +15,6 @@ const lang = getLangFromUrl(Astro.url);
 const sanitizedHref = href ? href.toLocaleLowerCase().replace(/\s+/g, '-') : '';
 ---
 
-<li class="flex w-full items-center justify-center">
+<li class="flex w-full items-center justify-center bg-amber-300 px-3 py-1.5">
 	<a href={`${getRelativeLocaleUrl(lang, '/')}${sanitizedHref}`}>{text}</a>
 </li>

@@ -3,8 +3,8 @@ const ui = {
 	'header.drivers': 'Pilotos',
 	'header.teams': 'Equipos',
 	'header.home': 'Inicio',
-	'header.chamTeam': 'Campeonato De Equipos',
-	'header.chamDriver': 'Campeonato De Pilotos'
+	'header.chamTeam': 'Campeonato de Equipos',
+	'header.chamDriver': 'Campeonato de Pilotos'
 } as const;
 
 export default ui;
